@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site com Menu Inicial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000; /* Fundo preto */
+            color: #fff; /* Texto branco */
+        }
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 80%;
+            background-color: #333; /* Fundo cinza escuro */
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); /* Sombra branca */
+            border-radius: 15px;
+        }
+        .menu div {
+            flex: 1;
+            text-align: center;
+        }
+        #hora-atual {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        #bateria {
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .bateria-icon {
+            width: 20px;
+            height: 10px;
+            border: 2px solid #fff;
+            border-radius: 3px;
+            margin-right: 5px;
+            position: relative;
+        }
+        .bateria-icon::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            right: -6px;
+            width: 4px;
+            height: 6px;
+            background-color: #fff;
+            border-radius: 2px;
+        }
+        .bateria-icon::after {
+            content: '';
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            width: 70%; /* 70% de bateria */
+            height: 6px;
+            background-color: #4caf50; /* Verde para a bateria */
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="menu">
+        <!-- Espaço para a hora atual -->
+        <div id="hora-atual">
+            <span id="hora-atual-texto">Carregando hora...</span>
+        </div>
+
+        <!-- Espaço vago para adicionar uma imagem -->
+        <div id="espaco-imagem">
+            <!-- Aqui você pode adicionar uma imagem -->
+        </div>
+
+        <!-- Espaço para mostrar a bateria -->
+        <div id="bateria">
+            <div class="bateria-icon"></div>
+            <span>70%</span>
+        </div>
+    </div>
+
+    <script>
+        // Função para atualizar a hora atual
+        function atualizarHora() {
+            const agora = new Date();
+            const hora = agora.getHours().toString().padStart(2, '0');
+            const minutos = agora.getMinutes().toString().padStart(2, '0');
+            const segundos = agora.getSeconds().toString().padStart(2, '0');
+            document.getElementById('hora-atual-texto').textContent = `${hora}:${minutos}:${segundos}`;
+        }
+
+        // Atualizar a hora a cada segundo
+        setInterval(atualizarHora, 1000);
+
+        // Inicializar a hora imediatamente
+        atualizarHora();
+    </script>
+
+</body>
+</html>
